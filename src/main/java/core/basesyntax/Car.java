@@ -16,8 +16,9 @@ public final class Car {
     public Car(int year, String color, List<Wheel> wheels, Engine engine) {
         this.year = year;
         this.color = color;
-        if (wheels == null)
+        if (wheels == null) {
             throw new NullPointerException("");
+        }
         List<Wheel> clonedWheels = new ArrayList<>();
         for (Wheel wheel : wheels) {
             try {
@@ -29,7 +30,9 @@ public final class Car {
         this.wheels = clonedWheels;
         if (engine == null) {
             this.engine = null;
-        } else { this.engine = engine.clone(); }
+        } else {
+            this.engine = engine.clone();
+        }
     }
 
     public int getYear() {
@@ -54,14 +57,16 @@ public final class Car {
     }
 
     public Engine getEngine() {
-        if (engine == null)
+        if (engine == null) {
             return null;
+        }
         return engine.clone();
     }
 
     public Car addWheel(Wheel newWheel) {
-        if (newWheel == null)
+        if (newWheel == null) {
             return this;
+        }
 
         List<Wheel> clonedWheels = new ArrayList<>();
         for (Wheel wheel : this.wheels) {
@@ -85,9 +90,14 @@ public final class Car {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Car car = (Car) o;
-        return year == car.year && Objects.equals(color, car.color) && Objects.equals(wheels, car.wheels) && Objects.equals(engine, car.engine);
+        return year == car.year
+                && Objects.equals(color, car.color)
+                && Objects.equals(wheels, car.wheels)
+                && Objects.equals(engine, car.engine);
     }
 
     @Override

@@ -29,7 +29,9 @@ public class Engine implements Cloneable {
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Engine engine = (Engine) o;
         return horsePower == engine.horsePower && Objects.equals(manufacturer, engine.manufacturer);
     }
@@ -51,7 +53,6 @@ public class Engine implements Cloneable {
     public Engine clone() {
         try {
             Engine clone = (Engine) super.clone();
-            // TODO: copy mutable state here, so the clone can't change the internals of the original
             return clone;
         } catch (CloneNotSupportedException e) {
             throw new AssertionError();
